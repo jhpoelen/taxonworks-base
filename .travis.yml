@@ -1,0 +1,11 @@
+sudo: required
+language: c
+compiler:
+- gcc
+services:
+- docker
+script:
+- docker build . --tag $TRAVIS_REPO_SLUG:latest
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- docker images
+- docker push $TRAVIS_REPO_SLUG:latest
