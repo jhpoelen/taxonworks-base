@@ -37,11 +37,5 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 ENV RAILS_ENV production
 
-RUN eval "$(rbenv init -)"; rbenv install $RBENV_VERSION \
-&&  eval "$(rbenv init -)"; rbenv global $RBENV_VERSION \
-&&  eval "$(rbenv init -)"; gem update --system \
-&&  eval "$(rbenv init -)"; gem install bundler -f \
-&& rm -rf /tmp/*
-
 RUN echo 'gem: --no-rdoc --no-ri >> "$HOME/.gemrc"'
 RUN gem update --system
